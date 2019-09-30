@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mes.Models.Warehouse;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +10,11 @@ namespace Mes.Models.Platform
     {
         public Assembly() : base() {
             WorkOrders = new List<WorkOrder>();
+            Inventories = new List<Inventory>();
         }
         public int Id { get; set; }
         public string Name { get; set; }
         public ICollection<WorkOrder> WorkOrders { get; set; }
+        public ICollection<Inventory> Inventories { get; set; }
     }
 }

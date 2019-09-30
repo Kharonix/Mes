@@ -13,6 +13,12 @@ namespace Mes.Models.Enum
         [Display(Name = "Started", Description = "В производстве")]
         Started = 1,
         [Display(Name = "Completed", Description = "Завершен")]
-        Completed = 2,
+        Completed = 2
+    }
+    public enum InventoryStatus : byte {
+        [Display(Name = "InWarehouse", Description = "На складе")]
+        InWarehouse = 0,
+        [Display(Name = "InCustomer", Description = "Отдано заказчику")]
+        InCustomer = 1
     }
 }

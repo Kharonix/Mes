@@ -21,8 +21,7 @@ namespace Mes.Models.Platform
 
         public decimal Count { get; set; }
         public decimal? DoneCount { get; set; }
-        public WorkOrderStatus WorkOrderStatus { get; set; }
-         
+        public WorkOrderStatus WorkOrderStatus { get; set; } 
 
 
     }

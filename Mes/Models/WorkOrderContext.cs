@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Mes.Models.Platform;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
 
-namespace Mes.Models.Platform
+namespace Mes.Models
 {
     public class WorkOrderContext : DbContext
     {
@@ -13,5 +15,9 @@ namespace Mes.Models.Platform
         public DbSet<Assembly> Assemblies { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Workplace> Workplaces { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
     }
 }
