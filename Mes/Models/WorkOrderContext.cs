@@ -19,5 +19,7 @@ namespace Mes.Models
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
+
+        public System.Data.Entity.DbSet<Mes.Models.Warehouse.Inventory> Inventories { get; set; }
     }
 }
