@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mes.Models.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,12 +12,16 @@ namespace Mes.Models.Platform
         public int Number { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
-        public int AssemblyId { get; set; }
-        public int CustomerId { get; set; }
+        public int? AssemblyId { get; set; }
+        public Assembly Assembly { get; set; }
+        public int? CustomerId { get; set; }
+        public Customer Customer { get; set; }
         public int WorkplaceId { get; set; }
+        public Workplace Workplace { get; set; }
 
         public decimal Count { get; set; }
         public decimal? DoneCount { get; set; }
+        public WorkOrderStatus WorkOrderStatus { get; set; }
          
 
 

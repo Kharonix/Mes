@@ -8,6 +8,7 @@ namespace Mes.Models.Platform
 {
     public class WorkOrderContext : DbContext
     {
+        public WorkOrderContext() : base("DefaultConnection") { }
         public DbSet<WorkOrder> WorkOrders { get; set; }
         public DbSet<Assembly> Assemblies { get; set; }
         public DbSet<Customer> Customers { get; set; }

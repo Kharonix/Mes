@@ -7,7 +7,11 @@ namespace Mes.Models.Platform
 {
     public class Workplace
     {
+        public Workplace() : base() {
+            WorkOrders = new List<WorkOrder>();
+        }
         public int Id { get; set; }
         public string Name{ get; set; }
+        public ICollection<WorkOrder> WorkOrders { get; set; }
     }
 }
