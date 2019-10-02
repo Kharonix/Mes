@@ -8,17 +8,17 @@ namespace Mes.Models.Enum
 {
     public enum WorkOrderStatus : byte
     {
-        [Display(Name = "New", Description ="Новый")]
+        [Display(Name = "Новый")]
         New = 0,
-        [Display(Name = "Started", Description = "В производстве")]
+        [Display(Name = "В производстве")]
         Started = 1,
-        [Display(Name = "Completed", Description = "Завершен")]
+        [Display(Name = "Завершен")]
         Completed = 2
     }
     public enum InventoryStatus : byte {
-        [Display(Name = "InWarehouse", Description = "На складе")]
+        [Display(Name = "На складе")]
         InWarehouse = 0,
-        [Display(Name = "InCustomer", Description = "Отдано заказчику")]
+        [Display(Name = "Отдано заказчику")]
         InCustomer = 1
     }
 }

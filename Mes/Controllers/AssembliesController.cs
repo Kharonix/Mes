@@ -19,7 +19,8 @@ namespace Mes.Controllers
         // GET: Assemblies
         public async Task<ActionResult> Index()
         {
-            return View(await db.Assemblies.ToListAsync());
+            var assemblies = db.Assemblies.Include(a => a.Workplace);
+            return View(await assemblies.ToListAsync());
         }
 
         // GET: Assemblies/Details/5
@@ -40,6 +41,7 @@ namespace Mes.Controllers
         // GET: Assemblies/Create
         public ActionResult Create()
         {
+            ViewBag.WorkplaceId = new SelectList(db.Workplaces, "Id", "Name");
             return View();
         }
 
@@ -48,7 +50,7 @@ namespace Mes.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name")] Assembly assembly)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,WorkplaceId")] Assembly assembly)
         {
             if (ModelState.IsValid)
             {
@@ -57,6 +59,7 @@ namespace Mes.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.WorkplaceId = new SelectList(db.Workplaces, "Id", "Name", assembly.WorkplaceId);
             return View(assembly);
         }
 
@@ -72,6 +75,7 @@ namespace Mes.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.WorkplaceId = new SelectList(db.Workplaces, "Id", "Name", assembly.WorkplaceId);
             return View(assembly);
         }
 
@@ -80,7 +84,7 @@ namespace Mes.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name")] Assembly assembly)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,WorkplaceId")] Assembly assembly)
         {
             if (ModelState.IsValid)
             {
@@ -88,6 +92,7 @@ namespace Mes.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.WorkplaceId = new SelectList(db.Workplaces, "Id", "Name", assembly.WorkplaceId);
             return View(assembly);
         }
 

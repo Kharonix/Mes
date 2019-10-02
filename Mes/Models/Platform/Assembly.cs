@@ -1,6 +1,7 @@
 ﻿using Mes.Models.Warehouse;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -13,7 +14,10 @@ namespace Mes.Models.Platform
             Inventories = new List<Inventory>();
         }
         public int Id { get; set; }
+        [Display(Name = "Название изделия")]
         public string Name { get; set; }
+        public int WorkplaceId { get; set; }
+        public Workplace Workplace { get; set; }
         public ICollection<WorkOrder> WorkOrders { get; set; }
         public ICollection<Inventory> Inventories { get; set; }
     }
