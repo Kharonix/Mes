@@ -185,6 +185,10 @@
     <Compile Include="Migrations\201910020821483_AssemblyWithWorkplace.Designer.cs">
       <DependentUpon>201910020821483_AssemblyWithWorkplace.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910020910510_AddInventoryNew.cs" />
+    <Compile Include="Migrations\201910020910510_AddInventoryNew.Designer.cs">
+      <DependentUpon>201910020910510_AddInventoryNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Enum\Enums.cs" />
@@ -262,11 +266,6 @@
     <Content Include="Views\Workplaces\Details.cshtml" />
     <Content Include="Views\Workplaces\Edit.cshtml" />
     <Content Include="Views\Workplaces\Index.cshtml" />
-    <Content Include="Views\Inventories\Create.cshtml" />
-    <Content Include="Views\Inventories\Delete.cshtml" />
-    <Content Include="Views\Inventories\Details.cshtml" />
-    <Content Include="Views\Inventories\Edit.cshtml" />
-    <Content Include="Views\Inventories\Index.cshtml" />
     <Content Include="Views\WorkOrders\Create.cshtml" />
     <Content Include="Views\WorkOrders\Delete.cshtml" />
     <Content Include="Views\WorkOrders\Details.cshtml" />
@@ -277,6 +276,11 @@
     <Content Include="Views\Assemblies\Details.cshtml" />
     <Content Include="Views\Assemblies\Edit.cshtml" />
     <Content Include="Views\Assemblies\Index.cshtml" />
+    <Content Include="Views\Inventories\Create.cshtml" />
+    <Content Include="Views\Inventories\Delete.cshtml" />
+    <Content Include="Views\Inventories\Details.cshtml" />
+    <Content Include="Views\Inventories\Edit.cshtml" />
+    <Content Include="Views\Inventories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -300,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910020821483_AssemblyWithWorkplace.resx">
       <DependentUpon>201910020821483_AssemblyWithWorkplace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910020910510_AddInventoryNew.resx">
+      <DependentUpon>201910020910510_AddInventoryNew.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
