@@ -170,7 +170,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AssembliesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
-    <Compile Include="Controllers\InventoriesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\WorkOrdersController.cs" />
     <Compile Include="Controllers\WorkplacesController.cs" />
@@ -189,11 +188,71 @@
     <Compile Include="Migrations\201910020910510_AddInventoryNew.Designer.cs">
       <DependentUpon>201910020910510_AddInventoryNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910041120331_test.cs" />
+    <Compile Include="Migrations\201910041120331_test.Designer.cs">
+      <DependentUpon>201910041120331_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910041123263_test1.cs" />
+    <Compile Include="Migrations\201910041123263_test1.Designer.cs">
+      <DependentUpon>201910041123263_test1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910041130511_test2.cs" />
+    <Compile Include="Migrations\201910041130511_test2.Designer.cs">
+      <DependentUpon>201910041130511_test2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910041133068_test3.cs" />
+    <Compile Include="Migrations\201910041133068_test3.Designer.cs">
+      <DependentUpon>201910041133068_test3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910041145032_test4.cs" />
+    <Compile Include="Migrations\201910041145032_test4.Designer.cs">
+      <DependentUpon>201910041145032_test4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910041151473_test5.cs" />
+    <Compile Include="Migrations\201910041151473_test5.Designer.cs">
+      <DependentUpon>201910041151473_test5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910041158388_test6.cs" />
+    <Compile Include="Migrations\201910041158388_test6.Designer.cs">
+      <DependentUpon>201910041158388_test6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910041206189_test7.cs" />
+    <Compile Include="Migrations\201910041206189_test7.Designer.cs">
+      <DependentUpon>201910041206189_test7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910041214183_test8.cs" />
+    <Compile Include="Migrations\201910041214183_test8.Designer.cs">
+      <DependentUpon>201910041214183_test8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910041219306_test9.cs" />
+    <Compile Include="Migrations\201910041219306_test9.Designer.cs">
+      <DependentUpon>201910041219306_test9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910041224160_test10.cs" />
+    <Compile Include="Migrations\201910041224160_test10.Designer.cs">
+      <DependentUpon>201910041224160_test10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910041305545_test11.cs" />
+    <Compile Include="Migrations\201910041305545_test11.Designer.cs">
+      <DependentUpon>201910041305545_test11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910041341154_test12.cs" />
+    <Compile Include="Migrations\201910041341154_test12.Designer.cs">
+      <DependentUpon>201910041341154_test12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910041355354_test13.cs" />
+    <Compile Include="Migrations\201910041355354_test13.Designer.cs">
+      <DependentUpon>201910041355354_test13.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Enum\Enums.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Mapping\WorkplaceMap.cs" />
+    <Compile Include="Models\Mapping\CustomerMap.cs" />
+    <Compile Include="Models\Mapping\AssemblyMap.cs" />
+    <Compile Include="Models\Mapping\WorkOrderMap.cs" />
     <Compile Include="Models\Platform\Assembly.cs" />
     <Compile Include="Models\Platform\Customer.cs" />
     <Compile Include="Models\Platform\WorkOrder.cs" />
@@ -214,6 +273,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -256,31 +316,26 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Customers\Create.cshtml" />
-    <Content Include="Views\Customers\Delete.cshtml" />
-    <Content Include="Views\Customers\Details.cshtml" />
-    <Content Include="Views\Customers\Edit.cshtml" />
-    <Content Include="Views\Customers\Index.cshtml" />
-    <Content Include="Views\Workplaces\Create.cshtml" />
-    <Content Include="Views\Workplaces\Delete.cshtml" />
-    <Content Include="Views\Workplaces\Details.cshtml" />
-    <Content Include="Views\Workplaces\Edit.cshtml" />
-    <Content Include="Views\Workplaces\Index.cshtml" />
-    <Content Include="Views\WorkOrders\Create.cshtml" />
-    <Content Include="Views\WorkOrders\Delete.cshtml" />
-    <Content Include="Views\WorkOrders\Details.cshtml" />
-    <Content Include="Views\WorkOrders\Edit.cshtml" />
-    <Content Include="Views\WorkOrders\Index.cshtml" />
     <Content Include="Views\Assemblies\Create.cshtml" />
     <Content Include="Views\Assemblies\Delete.cshtml" />
     <Content Include="Views\Assemblies\Details.cshtml" />
     <Content Include="Views\Assemblies\Edit.cshtml" />
     <Content Include="Views\Assemblies\Index.cshtml" />
-    <Content Include="Views\Inventories\Create.cshtml" />
-    <Content Include="Views\Inventories\Delete.cshtml" />
-    <Content Include="Views\Inventories\Details.cshtml" />
-    <Content Include="Views\Inventories\Edit.cshtml" />
-    <Content Include="Views\Inventories\Index.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\WorkOrders\Create.cshtml" />
+    <Content Include="Views\WorkOrders\Delete.cshtml" />
+    <Content Include="Views\WorkOrders\Details.cshtml" />
+    <Content Include="Views\WorkOrders\Edit.cshtml" />
+    <Content Include="Views\WorkOrders\Index.cshtml" />
+    <Content Include="Views\Workplaces\Create.cshtml" />
+    <Content Include="Views\Workplaces\Delete.cshtml" />
+    <Content Include="Views\Workplaces\Details.cshtml" />
+    <Content Include="Views\Workplaces\Edit.cshtml" />
+    <Content Include="Views\Workplaces\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -307,6 +362,48 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910020910510_AddInventoryNew.resx">
       <DependentUpon>201910020910510_AddInventoryNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041120331_test.resx">
+      <DependentUpon>201910041120331_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041123263_test1.resx">
+      <DependentUpon>201910041123263_test1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041130511_test2.resx">
+      <DependentUpon>201910041130511_test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041133068_test3.resx">
+      <DependentUpon>201910041133068_test3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041145032_test4.resx">
+      <DependentUpon>201910041145032_test4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041151473_test5.resx">
+      <DependentUpon>201910041151473_test5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041158388_test6.resx">
+      <DependentUpon>201910041158388_test6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041206189_test7.resx">
+      <DependentUpon>201910041206189_test7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041214183_test8.resx">
+      <DependentUpon>201910041214183_test8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041219306_test9.resx">
+      <DependentUpon>201910041219306_test9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041224160_test10.resx">
+      <DependentUpon>201910041224160_test10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041305545_test11.resx">
+      <DependentUpon>201910041305545_test11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041341154_test12.resx">
+      <DependentUpon>201910041341154_test12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041355354_test13.resx">
+      <DependentUpon>201910041355354_test13.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

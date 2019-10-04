@@ -5,6 +5,8 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
+using Mes.Models.Mapping;
+using Mes.Models.Warehouse;
 
 namespace Mes.Models
 {
@@ -15,11 +17,17 @@ namespace Mes.Models
         public DbSet<Assembly> Assemblies { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Workplace> Workplaces { get; set; }
+        public DbSet<Inventory> Inventories { get; set; }
+
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Configurations.Add(new WorkOrderMap());
+            modelBuilder.Configurations.Add(new AssemblyMap());
+            modelBuilder.Configurations.Add(new CustomerMap());
+            modelBuilder.Configurations.Add(new WorkplaceMap());
+            base.OnModelCreating(modelBuilder);
         }
-
-        public System.Data.Entity.DbSet<Mes.Models.Warehouse.Inventory> Inventories { get; set; }
+        
     }
 }

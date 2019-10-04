@@ -9,11 +9,12 @@ namespace Mes.Models.Platform
     public class Workplace
     {
         public Workplace() : base() {
-            Assemblies = new List<Assembly>();
+            WorkOrders = new List<WorkOrder>();
+
         }
         public int Id { get; set; }
         [Display(Name = "Название цеха")]
         public string Name{ get; set; }
-        public ICollection<Assembly> Assemblies { get; set; }
+        public ICollection<WorkOrder> WorkOrders { get; set; }
     }
 }

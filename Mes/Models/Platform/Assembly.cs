@@ -16,8 +16,6 @@ namespace Mes.Models.Platform
         public int Id { get; set; }
         [Display(Name = "Название изделия")]
         public string Name { get; set; }
-        public int WorkplaceId { get; set; }
-        public Workplace Workplace { get; set; }
         public ICollection<WorkOrder> WorkOrders { get; set; }
         public ICollection<Inventory> Inventories { get; set; }
     }

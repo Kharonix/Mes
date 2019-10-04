@@ -20,6 +20,8 @@ namespace Mes.Models.Platform
         public Assembly Assembly { get; set; }
         public int? CustomerId { get; set; }
         public Customer Customer { get; set; }
+        public int? WorkplaceId { get; set; }
+        public Workplace Workplace { get; set; }
         [Display(Name = "Заказано")]
         public decimal Count { get; set; }
         [Display(Name = "Изготовлено")]

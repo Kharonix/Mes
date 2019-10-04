@@ -19,7 +19,7 @@ namespace Mes.Controllers
         // GET: WorkOrders
         public async Task<ActionResult> Index()
         {
-            var workOrders = db.WorkOrders.Include(w => w.Assembly).Include(w => w.Assembly.Workplace).Include(w => w.Customer);
+            var workOrders = db.WorkOrders.Include(w => w.Assembly).Include(w => w.Customer).Include(w => w.Workplace);
             return View(await workOrders.ToListAsync());
         }
 
@@ -43,6 +43,7 @@ namespace Mes.Controllers
         {
             ViewBag.AssemblyId = new SelectList(db.Assemblies, "Id", "Name");
             ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name");
+            ViewBag.WorkplaceId = new SelectList(db.Workplaces, "Id", "Name");
             return View();
         }
 
@@ -51,7 +52,7 @@ namespace Mes.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Number,StartDate,EndDate,AssemblyId,CustomerId,Count,DoneCount,WorkOrderStatus")] WorkOrder workOrder)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Number,StartDate,EndDate,AssemblyId,CustomerId,WorkplaceId,Count,DoneCount,WorkOrderStatus")] WorkOrder workOrder)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +63,7 @@ namespace Mes.Controllers
 
             ViewBag.AssemblyId = new SelectList(db.Assemblies, "Id", "Name", workOrder.AssemblyId);
             ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name", workOrder.CustomerId);
+            ViewBag.WorkplaceId = new SelectList(db.Workplaces, "Id", "Name", workOrder.WorkplaceId);
             return View(workOrder);
         }
 
@@ -79,6 +81,7 @@ namespace Mes.Controllers
             }
             ViewBag.AssemblyId = new SelectList(db.Assemblies, "Id", "Name", workOrder.AssemblyId);
             ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name", workOrder.CustomerId);
+            ViewBag.WorkplaceId = new SelectList(db.Workplaces, "Id", "Name", workOrder.WorkplaceId);
             return View(workOrder);
         }
 
@@ -87,7 +90,7 @@ namespace Mes.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Number,StartDate,EndDate,AssemblyId,CustomerId,Count,DoneCount,WorkOrderStatus")] WorkOrder workOrder)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Number,StartDate,EndDate,AssemblyId,CustomerId,WorkplaceId,Count,DoneCount,WorkOrderStatus")] WorkOrder workOrder)
         {
             if (ModelState.IsValid)
             {
@@ -97,6 +100,7 @@ namespace Mes.Controllers
             }
             ViewBag.AssemblyId = new SelectList(db.Assemblies, "Id", "Name", workOrder.AssemblyId);
             ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name", workOrder.CustomerId);
+            ViewBag.WorkplaceId = new SelectList(db.Workplaces, "Id", "Name", workOrder.WorkplaceId);
             return View(workOrder);
         }
 
