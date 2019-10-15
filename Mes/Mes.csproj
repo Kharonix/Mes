@@ -171,6 +171,7 @@
     <Compile Include="Controllers\AssembliesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OperationController.cs" />
     <Compile Include="Controllers\WorkOrdersController.cs" />
     <Compile Include="Controllers\WorkplacesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -260,6 +261,11 @@
     <Compile Include="Models\WorkOrderContext.cs" />
     <Compile Include="Models\Platform\Workplace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\Abstract\IBaseDocument.cs" />
+    <Compile Include="Service\AssemblyRepository.cs" />
+    <Compile Include="Service\CustomerRepository.cs" />
+    <Compile Include="Service\WorkOrderRepository.cs" />
+    <Compile Include="Service\WorkplaceRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -336,6 +342,11 @@
     <Content Include="Views\Workplaces\Details.cshtml" />
     <Content Include="Views\Workplaces\Edit.cshtml" />
     <Content Include="Views\Workplaces\Index.cshtml" />
+    <Content Include="Views\Operation\Create.cshtml" />
+    <Content Include="Views\Operation\Delete.cshtml" />
+    <Content Include="Views\Operation\Details.cshtml" />
+    <Content Include="Views\Operation\Edit.cshtml" />
+    <Content Include="Views\Operation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
