@@ -33,21 +33,6 @@ namespace Mes.Controllers
             return View(_workOrderService.GetAll());
         }
 
-        // GET: WorkOrders/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            WorkOrder workOrder = _workOrderService.Get(id);
-            if (workOrder == null)
-            {
-                return HttpNotFound();
-            }
-            return View(workOrder);
-        }
-
         // GET: WorkOrders/Create
         public ActionResult Create()
         {
@@ -109,26 +94,6 @@ namespace Mes.Controllers
             ViewBag.CustomerId = new SelectList(_customerService.GetAll(), "Id", "Name", workOrder.CustomerId);
             ViewBag.WorkplaceId = new SelectList(_workplaceService.GetAll(), "Id", "Name", workOrder.WorkplaceId);
             return View(workOrder);
-        }
-
-        // GET: WorkOrders/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            WorkOrder workOrder = _workOrderService.Get(id);
-            ViewBag.AssemblyId = new SelectList(_assemblyService.GetAll(), "Id", "Name", workOrder.AssemblyId);
-            ViewBag.CustomerId = new SelectList(_customerService.GetAll(), "Id", "Name", workOrder.CustomerId);
-            ViewBag.WorkplaceId = new SelectList(_workplaceService.GetAll(), "Id", "Name", workOrder.WorkplaceId);
-            if (workOrder == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(workOrder);
-
         }
 
         // POST: WorkOrders/Delete/5
