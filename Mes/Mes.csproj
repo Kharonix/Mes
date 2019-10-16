@@ -341,10 +341,6 @@
     <Content Include="Views\Workplaces\Details.cshtml" />
     <Content Include="Views\Workplaces\Edit.cshtml" />
     <Content Include="Views\Workplaces\Index.cshtml" />
-    <Content Include="Views\Operation\Create.cshtml" />
-    <Content Include="Views\Operation\Delete.cshtml" />
-    <Content Include="Views\Operation\Details.cshtml" />
-    <Content Include="Views\Operation\Edit.cshtml" />
     <Content Include="Views\Operation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
