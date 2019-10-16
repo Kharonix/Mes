@@ -9,28 +9,38 @@ using System.Web;
 using System.Web.Mvc;
 using Mes.Models;
 using Mes.Models.Platform;
+using Mes.Service.Abstract;
+using Mes.Service;
 
 namespace Mes.Controllers
 {
     public class WorkOrdersController : Controller
     {
-        private WorkOrderContext db = new WorkOrderContext();
-
+        //private WorkOrderContext db = new WorkOrderContext();
+        private readonly IBaseDocument<WorkOrder> _workOrderService;
+        private readonly IBaseDocument<Assembly> _assemblyService;
+        private readonly IBaseDocument<Customer> _customerService;
+        private readonly IBaseDocument<Workplace> _workplaceService;
+        public WorkOrdersController() {
+            _workOrderService = new WorkOrderRepository();
+            _assemblyService = new AssemblyRepository();
+            _customerService = new CustomerRepository();
+            _workplaceService = new WorkplaceRepository();
+        }
         // GET: WorkOrders
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            var workOrders = db.WorkOrders.Include(w => w.Assembly).Include(w => w.Customer).Include(w => w.Workplace);
-            return View(await workOrders.ToListAsync());
+            return View(_workOrderService.GetAll());
         }
 
         // GET: WorkOrders/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkOrder workOrder = await db.WorkOrders.FindAsync(id);
+            WorkOrder workOrder = _workOrderService.Get(id);
             if (workOrder == null)
             {
                 return HttpNotFound();
@@ -41,9 +51,9 @@ namespace Mes.Controllers
         // GET: WorkOrders/Create
         public ActionResult Create()
         {
-            ViewBag.AssemblyId = new SelectList(db.Assemblies, "Id", "Name");
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name");
-            ViewBag.WorkplaceId = new SelectList(db.Workplaces, "Id", "Name");
+            ViewBag.AssemblyId = new SelectList(_assemblyService.GetAll(), "Id", "Name");
+            ViewBag.CustomerId = new SelectList(_customerService.GetAll(), "Id", "Name");
+            ViewBag.WorkplaceId = new SelectList(_workplaceService.GetAll(), "Id", "Name");
             return View();
         }
 
@@ -52,36 +62,33 @@ namespace Mes.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Number,StartDate,EndDate,AssemblyId,CustomerId,WorkplaceId,Count,DoneCount,WorkOrderStatus")] WorkOrder workOrder)
+        public ActionResult Create([Bind(Include = "Id,Number,StartDate,EndDate,AssemblyId,CustomerId,WorkplaceId,Count,DoneCount,WorkOrderStatus")] WorkOrder workOrder)
         {
             if (ModelState.IsValid)
             {
-                db.WorkOrders.Add(workOrder);
-                await db.SaveChangesAsync();
+                _workOrderService.Create(workOrder);
+                _workOrderService.Save();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AssemblyId = new SelectList(db.Assemblies, "Id", "Name", workOrder.AssemblyId);
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name", workOrder.CustomerId);
-            ViewBag.WorkplaceId = new SelectList(db.Workplaces, "Id", "Name", workOrder.WorkplaceId);
+            ViewBag.AssemblyId = new SelectList(_assemblyService.GetAll(), "Id", "Name", workOrder.AssemblyId);
+            ViewBag.CustomerId = new SelectList(_customerService.GetAll(), "Id", "Name", workOrder.CustomerId);
+            ViewBag.WorkplaceId = new SelectList(_workplaceService.GetAll(), "Id", "Name", workOrder.WorkplaceId);
             return View(workOrder);
         }
 
         // GET: WorkOrders/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkOrder workOrder = await db.WorkOrders.FindAsync(id);
+            WorkOrder workOrder = GetViewBag((int)id);
             if (workOrder == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.AssemblyId = new SelectList(db.Assemblies, "Id", "Name", workOrder.AssemblyId);
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name", workOrder.CustomerId);
-            ViewBag.WorkplaceId = new SelectList(db.Workplaces, "Id", "Name", workOrder.WorkplaceId);
             return View(workOrder);
         }
 
@@ -90,51 +97,62 @@ namespace Mes.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Number,StartDate,EndDate,AssemblyId,CustomerId,WorkplaceId,Count,DoneCount,WorkOrderStatus")] WorkOrder workOrder)
+        public ActionResult Edit([Bind(Include = "Id,Number,StartDate,EndDate,AssemblyId,CustomerId,WorkplaceId,Count,DoneCount,WorkOrderStatus")] WorkOrder workOrder)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(workOrder).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                _workOrderService.Update(workOrder);
+                _workOrderService.Save();
                 return RedirectToAction("Index");
             }
-            ViewBag.AssemblyId = new SelectList(db.Assemblies, "Id", "Name", workOrder.AssemblyId);
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name", workOrder.CustomerId);
-            ViewBag.WorkplaceId = new SelectList(db.Workplaces, "Id", "Name", workOrder.WorkplaceId);
+            ViewBag.AssemblyId = new SelectList(_assemblyService.GetAll(), "Id", "Name", workOrder.AssemblyId);
+            ViewBag.CustomerId = new SelectList(_customerService.GetAll(), "Id", "Name", workOrder.CustomerId);
+            ViewBag.WorkplaceId = new SelectList(_workplaceService.GetAll(), "Id", "Name", workOrder.WorkplaceId);
             return View(workOrder);
         }
 
         // GET: WorkOrders/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkOrder workOrder = await db.WorkOrders.FindAsync(id);
+            WorkOrder workOrder = _workOrderService.Get(id);
+            ViewBag.AssemblyId = new SelectList(_assemblyService.GetAll(), "Id", "Name", workOrder.AssemblyId);
+            ViewBag.CustomerId = new SelectList(_customerService.GetAll(), "Id", "Name", workOrder.CustomerId);
+            ViewBag.WorkplaceId = new SelectList(_workplaceService.GetAll(), "Id", "Name", workOrder.WorkplaceId);
             if (workOrder == null)
             {
                 return HttpNotFound();
             }
+
             return View(workOrder);
+
         }
 
         // POST: WorkOrders/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpDelete]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            WorkOrder workOrder = await db.WorkOrders.FindAsync(id);
-            db.WorkOrders.Remove(workOrder);
-            await db.SaveChangesAsync();
+            _workOrderService.Delete(id);
+            _workOrderService.Save();
+
             return RedirectToAction("Index");
         }
-
+        public WorkOrder GetViewBag(int id) {
+            WorkOrder workOrder = _workOrderService.Get(id);
+            ViewBag.AssemblyId = new SelectList(_assemblyService.GetAll(), "Id", "Name", workOrder.AssemblyId);
+            ViewBag.CustomerId = new SelectList(_customerService.GetAll(), "Id", "Name", workOrder.CustomerId);
+            ViewBag.WorkplaceId = new SelectList(_workplaceService.GetAll(), "Id", "Name", workOrder.WorkplaceId);
+            return workOrder;
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                _workOrderService.Dispose();
             }
             base.Dispose(disposing);
         }

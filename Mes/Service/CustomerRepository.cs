@@ -7,7 +7,7 @@ using System.Data.Entity;
 
 namespace Mes.Service
 {
-    class CustomerRepository : IBaseDocument<Customer>
+    public class CustomerRepository : IBaseDocument<Customer>
     {
         private WorkOrderContext db = new WorkOrderContext();
 

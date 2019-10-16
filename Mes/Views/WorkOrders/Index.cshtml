@@ -71,9 +71,14 @@
             @Html.DisplayFor(modelItem => item.WorkOrderStatus)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            <a href="@Url.Action("Edit", "WorkOrders", new { id = item.Id })">
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button></a>
+            @using (Html.BeginForm("DeleteConfirmed", "WorkOrders", new { id = item.Id }, FormMethod.Post, new { onsubmit = "return confirm('Вы уверены?');" }))
+            {
+                @Html.HttpMethodOverride(HttpVerbs.Delete)
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+            }
         </td>
     </tr>
 }
