@@ -22,21 +22,7 @@ namespace Mes.Controllers
             return View(await db.Assemblies.ToListAsync());
         }
 
-        // GET: Assemblies/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Assembly assembly = await db.Assemblies.FindAsync(id);
-            if (assembly == null)
-            {
-                return HttpNotFound();
-            }
-            return View(assembly);
-        }
-
+   
         // GET: Assemblies/Create
         public ActionResult Create()
         {
@@ -91,23 +77,8 @@ namespace Mes.Controllers
             return View(assembly);
         }
 
-        // GET: Assemblies/Delete/5
-        public async Task<ActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Assembly assembly = await db.Assemblies.FindAsync(id);
-            if (assembly == null)
-            {
-                return HttpNotFound();
-            }
-            return View(assembly);
-        }
-
         // POST: Assemblies/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpDelete]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {

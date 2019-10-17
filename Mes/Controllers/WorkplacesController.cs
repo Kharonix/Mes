@@ -22,21 +22,6 @@ namespace Mes.Controllers
             return View(await db.Workplaces.ToListAsync());
         }
 
-        // GET: Workplaces/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Workplace workplace = await db.Workplaces.FindAsync(id);
-            if (workplace == null)
-            {
-                return HttpNotFound();
-            }
-            return View(workplace);
-        }
-
         // GET: Workplaces/Create
         public ActionResult Create()
         {
@@ -91,23 +76,9 @@ namespace Mes.Controllers
             return View(workplace);
         }
 
-        // GET: Workplaces/Delete/5
-        public async Task<ActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Workplace workplace = await db.Workplaces.FindAsync(id);
-            if (workplace == null)
-            {
-                return HttpNotFound();
-            }
-            return View(workplace);
-        }
 
         // POST: Workplaces/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpDelete]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {

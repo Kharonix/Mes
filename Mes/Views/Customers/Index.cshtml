@@ -7,9 +7,12 @@
 <h2>Заказчики</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <div class="btn-group" role="group">
+        <button onclick="location.href='@Url.Action("Create", "Customers")'" type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus"></span> Добавить</button>
+        <button onclick="location.href='@Url.Action("Index", "Customers")'" type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-refresh"></span> Обновить</button>
+    </div>
 </p>
-<table class="table">
+<table class="table table-bordered">
     <tr class="grid_header">
         <th>
             @Html.DisplayNameFor(model => model.Name)
