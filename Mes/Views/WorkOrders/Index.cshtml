@@ -4,13 +4,23 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Заказы на производстве</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <div class="btn-group" role="group">
+        <a href="@Url.Action("Create", "WorkOrders")">
+            <button type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus"></span> Создать</button>
+        </a>
+        <a href="@Url.Action("Index", "WorkOrders")">
+            <button type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-refresh"></span> Обновить</button>
+        </a>
+    </div>
 </p>
 <table class="table">
-    <tr>
+    <tr class="grid_header">
+        <th>
+            @Html.DisplayNameFor(model => model.Number)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Assembly.Name)
         </th>
@@ -19,9 +29,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Workplace.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Number)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.StartDate)
@@ -42,45 +49,46 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Assembly.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Customer.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Workplace.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Number)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Count)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DoneCount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WorkOrderStatus)
-        </td>
-        <td>
-            <a href="@Url.Action("Edit", "WorkOrders", new { id = item.Id })">
-            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button></a>
-            @using (Html.BeginForm("DeleteConfirmed", "WorkOrders", new { id = item.Id }, FormMethod.Post, new { onsubmit = "return confirm('Вы уверены?');" }))
-            {
-                @Html.HttpMethodOverride(HttpVerbs.Delete)
-                @Html.AntiForgeryToken()
-                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
-            }
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Number)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Assembly.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Customer.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Workplace.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StartDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EndDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Count)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DoneCount)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.WorkOrderStatus)
+    </td>
+    <td>
+        <a href="@Url.Action("Edit", "WorkOrders", new { id = item.Id })">
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
+        </a>
+        @using (Html.BeginForm("DeleteConfirmed", "WorkOrders", new { id = item.Id }, FormMethod.Post, new { onsubmit = "return confirm('Вы уверены?');" }))
+        {
+            @Html.HttpMethodOverride(HttpVerbs.Delete)
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+        }
+    </td>
+</tr>
 }
 
 </table>

@@ -13,6 +13,7 @@ namespace Mes.Models.Platform
         [Display(Name = "Номер документа")]
         public int Number { get; set; }
         [Display(Name = "Дата создания")]
+        [DisplayFormat(ApplyFormatInEditMode =true,DataFormatString ="{0:dd.MM.yyyy}")]
         public DateTime? StartDate { get; set; }
         [Display(Name = "Дата закрытия")]
         public DateTime? EndDate { get; set; }
