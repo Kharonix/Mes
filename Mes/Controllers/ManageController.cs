@@ -308,7 +308,6 @@ namespace Mes.Controllers
             // Запрос перенаправления к внешнему поставщику входа для связывания имени входа текущего пользователя
             return new AccountController.ChallengeResult(provider, Url.Action("LinkLoginCallback", "Manage"), User.Identity.GetUserId());
         }
-
         //
         // GET: /Manage/LinkLoginCallback
         public async Task<ActionResult> LinkLoginCallback()

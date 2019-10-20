@@ -109,4 +109,15 @@ namespace Mes.Models
         [Display(Name = "Почта")]
         public string Email { get; set; }
     }
+
+    public class GroupedUserViewModel
+    {
+        public List<UserViewModel> Users { get; set; }
+        public List<UserViewModel> Admins { get; set; }
+    }
+    public class UserViewModel
+    {
+        public string Username { get; set; }
+        public string RoleName { get; set; }
+    }
 }

@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AssembliesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -246,6 +247,19 @@
       <DependentUpon>201910041355354_test13.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\ContextB\201909301325312_InitialCreate.cs" />
+    <Compile Include="Migrations\ContextB\201909301325312_InitialCreate.Designer.cs">
+      <DependentUpon>201909301325312_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ContextB\201910201554013_123.cs" />
+    <Compile Include="Migrations\ContextB\201910201554013_123.Designer.cs">
+      <DependentUpon>201910201554013_123.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ContextB\201910201615351_1234.cs" />
+    <Compile Include="Migrations\ContextB\201910201615351_1234.Designer.cs">
+      <DependentUpon>201910201615351_1234.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ContextB\ConfigB.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Enum\Enums.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -384,6 +398,7 @@
     <Content Include="Views\Workplaces\Edit.cshtml" />
     <Content Include="Views\Workplaces\Index.cshtml" />
     <Content Include="Views\Operation\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -450,6 +465,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910041355354_test13.resx">
       <DependentUpon>201910041355354_test13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ContextB\201909301325312_InitialCreate.resx">
+      <DependentUpon>201909301325312_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ContextB\201910201554013_123.resx">
+      <DependentUpon>201910201554013_123.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ContextB\201910201615351_1234.resx">
+      <DependentUpon>201910201615351_1234.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

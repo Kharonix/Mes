@@ -1,0 +1,21 @@
+﻿@model Mes.Models.GroupedUserViewModel
+<div class="row">
+    <h4>Users</h4>
+    @foreach (var user in Model.Users)
+    {
+        <p>
+            <strong>
+                @user.Username - @user.RoleName
+            </strong>
+        </p>
+    }
+    <h4>Advisers</h4>
+    @foreach (var usera in Model.Admins)
+    {
+        <p>
+            <strong>
+                @usera.Username - @usera.RoleName
+            </strong>
+        </p>
+    }
+</div>
