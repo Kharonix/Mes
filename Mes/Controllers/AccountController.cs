@@ -392,7 +392,7 @@ namespace Mes.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "WorkOrders");
+            return RedirectToAction("Login", "Account");
         }
 
         //
@@ -442,6 +442,7 @@ namespace Mes.Controllers
                 ModelState.AddModelError("", error);
             }
         }
+       
 
         private ActionResult RedirectToLocal(string returnUrl)
         {
@@ -449,7 +450,7 @@ namespace Mes.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "WorkOrders");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
