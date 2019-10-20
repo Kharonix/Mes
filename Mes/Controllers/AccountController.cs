@@ -51,7 +51,6 @@ namespace Mes.Controllers
                 _userManager = value;
             }
         }
-
         //
         // GET: /Account/Login
         [AllowAnonymous]

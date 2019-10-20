@@ -6,44 +6,52 @@
 
 <h2>Заказы на производстве</h2>
 
-<p>
-    <div class="btn-group" role="group">
-        <button onclick="location.href='@Url.Action("Create", "WorkOrders")'" type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus"></span> Добавить</button>
-        <button onclick="location.href='@Url.Action("Index", "WorkOrders")'" type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-refresh"></span> Обновить</button>
+<div class="card">
+    <div class="card-header">
+        <div class="btn-group" role="group">
+            <button onclick="location.href='@Url.Action("Create", "WorkOrders")'" type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus"></span> Добавить</button>
+            <button onclick="location.href='@Url.Action("Index", "WorkOrders")'" type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-refresh"></span> Обновить</button>
+        </div>
+        <div class="card-body">
+            <p>ewrftwef</p>
+        </div>
     </div>
-</p>
+</div>
+
 <div class="table-responsive">
-    <table class="table table-bordered">
-        <tr class="grid_header">
-            <th>
-                @Html.DisplayNameFor(model => model.Number)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Assembly.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Workplace.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EndDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Count)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DoneCount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WorkOrderStatus)
-            </th>
-            <th></th>
-        </tr>
+    <table class="table table-hover table-bordered table-condensed table-bordered" id="WorkOrderTable">
+        <thead>
+            <tr class="grid_header">
+                <th>
+                    @Html.DisplayNameFor(model => model.Number)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Assembly.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Customer.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Workplace.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EndDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Count)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DoneCount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.WorkOrderStatus)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
 
         @foreach (var item in Model)
         {
@@ -89,4 +97,19 @@
 
     </table>
 </div>
-  
+
+@section scripts{
+    <script>
+
+        $(function () {
+            $('#WorkOrderTable').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true
+            });
+        });
+    </script>
+}  
