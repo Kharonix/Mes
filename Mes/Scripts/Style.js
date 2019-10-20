@@ -5,3 +5,7 @@ $(function () {
         locale: 'ru'
     });
 });
+
+function hover(){
+    $('.glyphicon123').toggleClass('glyphicon-menu-down,glyphicon-menu-up');
+}

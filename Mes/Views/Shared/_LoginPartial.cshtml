@@ -3,20 +3,38 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
-
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Здравствуйте " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
-    </ul>
+        @Html.AntiForgeryToken()
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown" onclick="hover()">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                    Панель <span class="glyphicon  glyphicon123 glyphicon-menu-down"></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div class="btn-group btn-group-vertical btn-block" role="group">
+                        <button onclick="location.href='@Url.Action("Register", "Account", new { id = "registerLink" })'" type="button" class="btn btn-link"><span class="text-info">Регистрация</span></button>
+                        <button onclick="location.href='@Url.Action("UsersWithRoles", "Manage")'" type="button" class="btn btn-link"><span class="text-info">Пользователи</span></button>
+                    </div>
+                        @*<a class="nav navbar-nav dropdown-item" href="@Url.Action("Register", "Account", new { id = "registerLink" })">Регистрация</a>*@
+                    </div>
+</li>
+            <li>@Html.ActionLink("Здравствуйте " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
+        </ul>
     }
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Регистрация", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Выполнить вход", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
+
+<script>
+    function hover(){
+    $('.glyphicon123').toggleClass('glyphicon-menu-up');
+    }
+</script>
+
+
+
+
