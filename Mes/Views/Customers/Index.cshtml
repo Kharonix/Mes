@@ -12,25 +12,44 @@
         <button onclick="location.href='@Url.Action("Index", "Customers")'" type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-refresh"></span> Обновить</button>
     </div>
 </p>
-<table class="table table-bordered">
-    <tr class="grid_header">
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th></th>
-    </tr>
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-condensed table-bordered" id="CustomersTable">
+        <thead>
+            <tr class="grid_header">
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    </table>
+</div>
+@section scripts{
+    <script>
 
-</table>
+        $(function () {
+            $('#CustomersTable').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true
+            });
+        });
+    </script>
+}  

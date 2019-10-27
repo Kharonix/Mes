@@ -5,67 +5,86 @@
 }
 
 <h2>Заказы на выполнение</h2>
-<table class="table table-bordered">
-    <tr class="grid_header">
-        <th>
-            @Html.DisplayNameFor(model => model.Assembly.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Customer.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Workplace.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Number)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Count)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DoneCount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.WorkOrderStatus)
-        </th>
-    </tr>
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-condensed table-bordered" id="OperationTable">
+        <thead>
+        <tr class="grid_header">
+            <th>
+                @Html.DisplayNameFor(model => model.Assembly.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Workplace.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Count)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DoneCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkOrderStatus)
+            </th>
+        </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Assembly.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Workplace.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Count)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DoneCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WorkOrderStatus)
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Assembly.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Customer.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Workplace.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Number)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Count)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DoneCount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WorkOrderStatus)
-        </td>
-    </tr>
-}
+    </table>
+</div>
+@section scripts{
+    <script>
 
-</table>
+        $(function () {
+            $('#OperationTable').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true
+            });
+        });
+    </script>
+}  

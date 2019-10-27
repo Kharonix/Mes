@@ -4,9 +4,12 @@
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
         @Html.AntiForgeryToken()
-        <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right">
+
+        @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+        {
             <li class="dropdown" onclick="hover()">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Панель <span class="glyphicon  glyphicon123 glyphicon-menu-down"></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -15,9 +18,9 @@
                         <button onclick="location.href='@Url.Action("UsersWithRoles", "Manage")'" type="button" class="btn btn-link"><span class="text-info">Пользователи</span></button>
                         <button onclick="location.href='@Url.Action("Index", "RoleAdmin")'" type="button" class="btn btn-link"><span class="text-info">Роли</span></button>
                     </div>
-                        @*<a class="nav navbar-nav dropdown-item" href="@Url.Action("Register", "Account", new { id = "registerLink" })">Регистрация</a>*@
-                    </div>
-</li>
+                </div>
+            </li>
+        }            
             <li>@Html.ActionLink("Здравствуйте " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
         </ul>
