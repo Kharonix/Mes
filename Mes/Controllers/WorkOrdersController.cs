@@ -96,6 +96,18 @@ namespace Mes.Controllers
             return View(workOrder);
         }
 
+        public ActionResult Started(int? id)
+        {
+            var workOrder = _workOrderService.Get(id);
+            if (workOrder.WorkOrderStatus!= Models.Enum.WorkOrderStatus.Started) {
+                workOrder.WorkOrderStatus = Models.Enum.WorkOrderStatus.Started;
+                _workOrderService.Update(workOrder);
+                _workOrderService.Save();
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
+        }
+
         // POST: WorkOrders/Delete/5
         [HttpDelete]
         [ValidateAntiForgeryToken]

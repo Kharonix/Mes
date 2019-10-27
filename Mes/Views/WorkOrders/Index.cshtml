@@ -79,6 +79,7 @@
                     @Html.DisplayFor(modelItem => item.WorkOrderStatus)
                 </td>
                 <td>
+                    <button onclick="location.href='@Url.Action("Started", "WorkOrders", new { id = item.Id })'" type="button" class="btn btn-default"><span class="glyphicon glyphicon-play"></span></button>
                     <button onclick="location.href='@Url.Action("Edit", "WorkOrders", new { id = item.Id })'" type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
                     @using (Html.BeginForm("DeleteConfirmed", "WorkOrders", new { id = item.Id }, FormMethod.Post, new { onsubmit = "return confirm('Вы уверены?');" }))
                     {

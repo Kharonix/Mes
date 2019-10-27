@@ -175,11 +175,14 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OperationController.cs" />
+    <Compile Include="Controllers\RoleAdminController.cs" />
     <Compile Include="Controllers\WorkOrdersController.cs" />
     <Compile Include="Controllers\WorkplacesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\AppRoleManager.cs" />
+    <Compile Include="Infrastructure\IdentityHelpers.cs" />
     <Compile Include="Migrations\201909301326109_1234.cs" />
     <Compile Include="Migrations\201909301326109_1234.Designer.cs">
       <DependentUpon>201909301326109_1234.cs</DependentUpon>
@@ -261,8 +264,13 @@
     <Compile Include="Migrations\ContextB\201910201615351_1234.Designer.cs">
       <DependentUpon>201910201615351_1234.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ContextB\201910271523398_RoleAdmin123.cs" />
+    <Compile Include="Migrations\ContextB\201910271523398_RoleAdmin123.Designer.cs">
+      <DependentUpon>201910271523398_RoleAdmin123.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextB\ConfigB.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AppRole.cs" />
     <Compile Include="Models\Enum\Enums.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -441,6 +449,9 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\RoleAdmin\Index.cshtml" />
+    <Content Include="Views\RoleAdmin\Create.cshtml" />
+    <Content Include="Views\RoleAdmin\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -508,6 +519,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ContextB\201910201615351_1234.resx">
       <DependentUpon>201910201615351_1234.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ContextB\201910271523398_RoleAdmin123.resx">
+      <DependentUpon>201910271523398_RoleAdmin123.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
