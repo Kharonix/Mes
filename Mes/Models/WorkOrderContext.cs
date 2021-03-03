@@ -18,6 +18,7 @@ namespace Mes.Models
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Workplace> Workplaces { get; set; }
         public DbSet<Inventory> Inventories { get; set; }
+        public DbSet<AssemblyComponent> AssemblyComponents { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -26,6 +27,7 @@ namespace Mes.Models
             modelBuilder.Configurations.Add(new AssemblyMap());
             modelBuilder.Configurations.Add(new CustomerMap());
             modelBuilder.Configurations.Add(new WorkplaceMap());
+            modelBuilder.Configurations.Add(new AssemblyComponentMap());
             base.OnModelCreating(modelBuilder);
         }
         
