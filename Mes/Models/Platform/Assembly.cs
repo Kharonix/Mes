@@ -12,11 +12,13 @@ namespace Mes.Models.Platform
         public Assembly() : base() {
             WorkOrders = new List<WorkOrder>();
             Inventories = new List<Inventory>();
+            AssemblyComponents = new List<AssemblyComponent>();
         }
         public int Id { get; set; }
         [Display(Name = "Название изделия")]
         public string Name { get; set; }
         public ICollection<WorkOrder> WorkOrders { get; set; }
         public ICollection<Inventory> Inventories { get; set; }
+        public ICollection<AssemblyComponent> AssemblyComponents { get; set; }
     }
 }

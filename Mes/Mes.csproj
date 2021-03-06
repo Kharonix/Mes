@@ -251,6 +251,10 @@
     <Compile Include="Migrations\201910041355354_test13.Designer.cs">
       <DependentUpon>201910041355354_test13.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103031059334_Add_AssemlyComponent.cs" />
+    <Compile Include="Migrations\202103031059334_Add_AssemlyComponent.Designer.cs">
+      <DependentUpon>202103031059334_Add_AssemlyComponent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\ContextB\201909301325312_InitialCreate.cs" />
     <Compile Include="Migrations\ContextB\201909301325312_InitialCreate.Designer.cs">
@@ -274,10 +278,12 @@
     <Compile Include="Models\Enum\Enums.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Mapping\AssemblyMap.cs" />
     <Compile Include="Models\Mapping\WorkplaceMap.cs" />
     <Compile Include="Models\Mapping\CustomerMap.cs" />
-    <Compile Include="Models\Mapping\AssemblyMap.cs" />
+    <Compile Include="Models\Mapping\AssemblyComponentMap.cs" />
     <Compile Include="Models\Mapping\WorkOrderMap.cs" />
+    <Compile Include="Models\Platform\AssemblyComponent.cs" />
     <Compile Include="Models\Platform\Assembly.cs" />
     <Compile Include="Models\Platform\Customer.cs" />
     <Compile Include="Models\Platform\WorkOrder.cs" />
@@ -294,6 +300,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\mesDB.mdf" />
+    <Content Include="App_Data\mesDB_log.ldf">
+      <DependentUpon>mesDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -452,9 +462,7 @@
     <Content Include="Views\RoleAdmin\Create.cshtml" />
     <Content Include="Views\RoleAdmin\Edit.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
@@ -509,6 +517,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910041355354_test13.resx">
       <DependentUpon>201910041355354_test13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103031059334_Add_AssemlyComponent.resx">
+      <DependentUpon>202103031059334_Add_AssemlyComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ContextB\201909301325312_InitialCreate.resx">
       <DependentUpon>201909301325312_InitialCreate.cs</DependentUpon>
