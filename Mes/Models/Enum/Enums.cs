@@ -32,4 +32,20 @@ namespace Mes.Models.Enum
         [Display(Name = "Частично отдано заказчику")]
         PatialInCustomer = 1,
     }
+
+    public enum HttpCode
+    {
+        //500 Internal server error — всё сломалось, но мы скоро починим
+        InternalServerError = 500,
+        //400 Bad request — а теперь у вас всё сломалось
+        BadRequest = 400,
+        //403 Forbidden — вам сюда нельзя
+        Forbidden = 403,
+        //404 Not found — по этому адресу никто не живёт
+        NotFound = 404,
+        //405 Method not allowed — нельзя такое делать
+        MethodNotAllowed = 405,
+        //422 Unprocessable entity — исправьте и пришлите снова
+        UnprocessableEntity = 422
+    }
 }

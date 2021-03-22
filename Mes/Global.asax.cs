@@ -17,5 +17,10 @@ namespace Mes
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception exception = System.Web.HttpContext.Current.Server.GetLastError();
+            //TODO: Handle Exception
+        }
     }
 }
